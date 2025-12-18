@@ -1,8 +1,8 @@
 # 🔌 Socket Error Detection Simulator
 
-**Bilgisayar Ağlarında Hata Tespit Yöntemlerini Simüle Eden Python Projesi**
+**Data Communication System - Error Detection Simulation Project**
 
-Bu proje, ağ iletişiminde kullanılan çeşitli **hata tespit algoritmalarını** (Error Detection) simüle etmek amacıyla geliştirilmiştir. Proje, socket programlama kullanarak üç bileşen arasında veri iletimi gerçekleştirir ve veri bozulması durumunda hataların nasıl tespit edildiğini gösterir.
+Bu proje, **Data Communication System** dersi kapsamında veri iletişiminde kullanılan çeşitli **hata tespit algoritmalarını** (Error Detection) simüle etmek amacıyla geliştirilmiştir. Proje, socket programlama kullanarak üç bileşen arasında veri iletimi gerçekleştirir ve iletim sırasında oluşabilecek hataların nasıl tespit edildiğini gösterir.
 
 ---
 
@@ -19,7 +19,7 @@ Bu proje, ağ iletişiminde kullanılan çeşitli **hata tespit algoritmaların�
 
 ## 🎯 Proje Hakkında
 
-Bu simülasyon, gerçek dünya ağ iletişimindeki hata tespit mekanizmalarını anlamak için tasarlanmıştır:
+Bu simülasyon, **Data Communication System** dersinde öğrenilen hata tespit mekanizmalarını pratik olarak anlamak için tasarlanmıştır. Veri iletişiminde gürültülü kanallar (noisy channels) üzerinden gönderilen verilerde oluşabilecek hataların tespiti aşağıdaki şekilde simüle edilmektedir:
 
 1. **Gönderici (Client 1)** → Veriyi seçilen hata tespit yöntemiyle kodlar ve gönderir
 2. **Sunucu (Corruptor)** → Veriyi alır, rastgele bozar ve iletir
@@ -210,7 +210,19 @@ Bu proje eğitim amaçlı geliştirilmiştir.
 
 ## 👨‍💻 Geliştirici
 
-Bilgisayar Ağları dersi projesi kapsamında geliştirilmiştir.
+**Data Communication System** dersi projesi kapsamında geliştirilmiştir.
+
+### 📖 Ders Konuları
+
+Bu projede aşağıdaki ders konuları uygulamalı olarak işlenmiştir:
+
+- Error Detection & Error Correction
+- Parity Check (Even/Odd Parity)
+- Two-Dimensional Parity
+- Cyclic Redundancy Check (CRC)
+- Hamming Code
+- Internet Checksum
+- Socket Programming & Data Transmission
 
 ---
 
