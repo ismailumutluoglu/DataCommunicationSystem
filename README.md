@@ -2,32 +2,32 @@
 
 **Data Communication System - Error Detection Simulation Project**
 
-Bu proje, **Data Communication System** dersi kapsamında veri iletişiminde kullanılan çeşitli **hata tespit algoritmalarını** (Error Detection) simüle etmek amacıyla geliştirilmiştir. Proje, socket programlama kullanarak üç bileşen arasında veri iletimi gerçekleştirir ve iletim sırasında oluşabilecek hataların nasıl tespit edildiğini gösterir.
+This project was developed as part of the **Data Communication System** course to simulate various **error detection algorithms** used in data communication. The project performs data transmission between three components using socket programming and demonstrates how errors that may occur during transmission are detected.
 
 ---
 
-## 📋 İçindekiler
+## 📋 Table of Contents
 
-- [Proje Hakkında](#-proje-hakkında)
-- [Mimari](#-mimari)
-- [Desteklenen Algoritmalar](#-desteklenen-algoritmalar)
-- [Kurulum](#-kurulum)
-- [Kullanım](#-kullanım)
-- [Proje Yapısı](#-proje-yapısı)
-
----
-
-## 🎯 Proje Hakkında
-
-Bu simülasyon, **Data Communication System** dersinde öğrenilen hata tespit mekanizmalarını pratik olarak anlamak için tasarlanmıştır. Veri iletişiminde gürültülü kanallar (noisy channels) üzerinden gönderilen verilerde oluşabilecek hataların tespiti aşağıdaki şekilde simüle edilmektedir:
-
-1. **Gönderici (Client 1)** → Veriyi seçilen hata tespit yöntemiyle kodlar ve gönderir
-2. **Sunucu (Corruptor)** → Veriyi alır, rastgele bozar ve iletir
-3. **Alıcı (Client 2)** → Veriyi alır, kontrol bitlerini hesaplar ve hata olup olmadığını tespit eder
+- [About the Project](#-about-the-project)
+- [Architecture](#-architecture)
+- [Supported Algorithms](#-supported-algorithms)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
 
 ---
 
-## 🏗 Mimari
+## 🎯 About the Project
+
+This simulation is designed to practically understand the error detection mechanisms learned in the **Data Communication System** course. The detection of errors that may occur in data sent over noisy channels in data communication is simulated as follows:
+
+1. **Sender (Client 1)** → Encodes data with the selected error detection method and sends it
+2. **Server (Corruptor)** → Receives the data, randomly corrupts it, and forwards it
+3. **Receiver (Client 2)** → Receives the data, computes check bits, and detects whether there are errors
+
+---
+
+## 🏗 Architecture
 
 ```
 ┌─────────────────┐         ┌─────────────────┐         ┌─────────────────┐
@@ -35,75 +35,75 @@ Bu simülasyon, **Data Communication System** dersinde öğrenilen hata tespit m
 │   (Sender)      │ ──────► │   (Corruptor)   │ ──────► │   (Receiver)    │
 │   Port: 5000    │         │   In:5000       │         │   Port: 6000    │
 │                 │         │   Out:6000      │         │                 │
-│ • Veri girişi   │         │ • Rastgele      │         │ • Hata kontrolü │
-│ • Algoritma     │         │   karakter      │         │ • Sonuç         │
-│   seçimi        │         │   değiştirme    │         │   gösterimi     │
-│ • Kontrol biti  │         │                 │         │                 │
-│   hesaplama     │         │                 │         │                 │
+│ • Data input    │         │ • Random        │         │ • Error check   │
+│ • Algorithm     │         │   character     │         │ • Result        │
+│   selection     │         │   modification  │         │   display       │
+│ • Check bit     │         │                 │         │                 │
+│   calculation   │         │                 │         │                 │
 └─────────────────┘         └─────────────────┘         └─────────────────┘
 ```
 
 ---
 
-## 🔬 Desteklenen Algoritmalar
+## 🔬 Supported Algorithms
 
-| #   | Algoritma             | Açıklama                                                                                   |
-| --- | --------------------- | ------------------------------------------------------------------------------------------ |
-| 1   | **Even Parity**       | Tek bitlik basit parite kontrolü. Veri bitlerindeki 1'lerin sayısını çift yapar.           |
-| 2   | **2D Parity**         | İki boyutlu parite. Hem satır hem sütun bazında parite hesaplar, daha güçlü tespit sağlar. |
-| 3   | **CRC-16 CCITT**      | Cyclic Redundancy Check. Polinom bölme tabanlı güçlü hata tespit algoritması.              |
-| 4   | **Hamming Code**      | Hem hata tespiti hem de tek bit hata düzeltme yapabilen algoritma.                         |
-| 5   | **Internet Checksum** | TCP/IP protokollerinde kullanılan 16-bit checksum algoritması.                             |
+| #   | Algorithm             | Description                                                                                      |
+| --- | --------------------- | ------------------------------------------------------------------------------------------------ |
+| 1   | **Even Parity**       | Simple single-bit parity check. Makes the count of 1s in data bits even.                         |
+| 2   | **2D Parity**         | Two-dimensional parity. Computes parity for both rows and columns, providing stronger detection. |
+| 3   | **CRC-16 CCITT**      | Cyclic Redundancy Check. A powerful error detection algorithm based on polynomial division.      |
+| 4   | **Hamming Code**      | An algorithm capable of both error detection and single-bit error correction.                    |
+| 5   | **Internet Checksum** | 16-bit checksum algorithm used in TCP/IP protocols.                                              |
 
 ---
 
-## ⚙ Kurulum
+## ⚙ Installation
 
-### Gereksinimler
+### Requirements
 
 - Python 3.6+
 
-### Adımlar
+### Steps
 
 ```bash
-# Repoyu klonlayın
-git clone https://github.com/kullanici/SocketErrorDetection.git
+# Clone the repository
+git clone https://github.com/username/SocketErrorDetection.git
 cd SocketErrorDetection
 ```
 
-> 📝 **Not:** Harici bir kütüphane gerektirmez. Sadece Python standart kütüphanesi kullanılmaktadır.
+> 📝 **Note:** No external libraries are required. Only Python standard library is used.
 
 ---
 
-## 🚀 Kullanım
+## 🚀 Usage
 
-Üç ayrı terminal penceresi açın ve sırasıyla çalıştırın:
+Open three separate terminal windows and run in order:
 
-### 1. Alıcıyı Başlatın (Terminal 1)
+### 1. Start the Receiver (Terminal 1)
 
 ```bash
 python client2_receiver/client2_receiver.py
 ```
 
-> Çıktı: `Client 2 waiting...`
+> Output: `Client 2 waiting...`
 
-### 2. Sunucuyu Başlatın (Terminal 2)
+### 2. Start the Server (Terminal 2)
 
 ```bash
 python server_corruptor/server_corruptor.py
 ```
 
-> Çıktı: `Server waiting...`
+> Output: `Server waiting...`
 
-### 3. Göndericiyi Çalıştırın (Terminal 3)
+### 3. Run the Sender (Terminal 3)
 
 ```bash
 python client1_sender/client1_sender.py
 ```
 
-### Örnek Çalışma
+### Example Run
 
-**Gönderici (Client 1):**
+**Sender (Client 1):**
 
 ```
 1 - Even Parity
@@ -117,14 +117,14 @@ Enter text: Hello
 Sent Packet: Hello|CRC16|9D13
 ```
 
-**Sunucu:**
+**Server:**
 
 ```
 Server waiting...
 Forwarded: HXllo|CRC16|9D13
 ```
 
-**Alıcı (Client 2):**
+**Receiver (Client 2):**
 
 ```
 Client 2 waiting...
@@ -137,39 +137,39 @@ Status             : DATA CORRUPTED
 
 ---
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 SocketErrorDetection/
 │
 ├── client1_sender/
-│   └── client1_sender.py      # Veri gönderici istemci
+│   └── client1_sender.py      # Data sender client
 │
 ├── client2_receiver/
-│   └── client2_receiver.py    # Veri alıcı istemci
+│   └── client2_receiver.py    # Data receiver client
 │
 ├── server_corruptor/
-│   └── server_corruptor.py    # Veri bozucu sunucu
+│   └── server_corruptor.py    # Data corruptor server
 │
-├── common/                    # Ortak modüller
+├── common/                    # Common modules
 │   ├── __init__.py
-│   ├── parity.py              # Even Parity algoritması
-│   ├── parity2d.py            # 2D Parity algoritması
-│   ├── crc.py                 # CRC-16 CCITT algoritması
-│   ├── hamming.py             # Hamming Code algoritması
-│   └── checksum.py            # Internet Checksum algoritması
+│   ├── parity.py              # Even Parity algorithm
+│   ├── parity2d.py            # 2D Parity algorithm
+│   ├── crc.py                 # CRC-16 CCITT algorithm
+│   ├── hamming.py             # Hamming Code algorithm
+│   └── checksum.py            # Internet Checksum algorithm
 │
 └── README.md
 ```
 
 ---
 
-## 📚 Algoritma Detayları
+## 📚 Algorithm Details
 
 ### Even Parity
 
 ```python
-# Tüm bitlerdeki 1'lerin sayısı çift olacak şekilde parite biti eklenir
+# A parity bit is added so that the count of 1s in all bits is even
 ones = sum(bin(b).count("1") for b in data)
 parity_bit = ones % 2
 ```
@@ -177,44 +177,44 @@ parity_bit = ones % 2
 ### CRC-16 CCITT
 
 ```python
-# Polinom: 0x1021
-# Başlangıç değeri: 0xFFFF
-# XOR ve shift işlemleriyle 16-bit kontrol değeri üretilir
+# Polynomial: 0x1021
+# Initial value: 0xFFFF
+# A 16-bit check value is produced using XOR and shift operations
 ```
 
 ### Internet Checksum
 
 ```python
-# 16-bit kelimeler toplanır
-# Taşmalar eklenir (one's complement)
-# Sonuç tersine çevrilir
+# 16-bit words are summed
+# Overflows are added (one's complement)
+# The result is inverted
 ```
 
 ---
 
-## 🤝 Katkıda Bulunma
+## 🤝 Contributing
 
-1. Fork yapın
-2. Feature branch oluşturun (`git checkout -b feature/yeniOzellik`)
-3. Commit yapın (`git commit -m 'Yeni özellik eklendi'`)
-4. Push yapın (`git push origin feature/yeniOzellik`)
-5. Pull Request açın
-
----
-
-## 📄 Lisans
-
-Bu proje eğitim amaçlı geliştirilmiştir.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/newFeature`)
+3. Commit your changes (`git commit -m 'Added new feature'`)
+4. Push to the branch (`git push origin feature/newFeature`)
+5. Open a Pull Request
 
 ---
 
-## 👨‍💻 Geliştirici
+## 📄 License
 
-**Data Communication System** dersi projesi kapsamında geliştirilmiştir.
+This project was developed for educational purposes.
 
-### 📖 Ders Konuları
+---
 
-Bu projede aşağıdaki ders konuları uygulamalı olarak işlenmiştir:
+## 👨‍💻 Developer
+
+Developed as part of the **Data Communication System** course project.
+
+### 📖 Course Topics
+
+The following course topics were practically implemented in this project:
 
 - Error Detection & Error Correction
 - Parity Check (Even/Odd Parity)
@@ -227,5 +227,5 @@ Bu projede aşağıdaki ders konuları uygulamalı olarak işlenmiştir:
 ---
 
 <p align="center">
-  <i>⭐ Bu proje faydalı olduysa yıldız vermeyi unutmayın!</i>
+  <i>⭐ Don't forget to star this project if you found it helpful!</i>
 </p>
